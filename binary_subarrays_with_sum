@@ -1,0 +1,14 @@
+class Solution:
+    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+        ps=0
+        count={0:1}
+        ans=0
+        for num in nums:
+            ps+=num
+            if ps-goal in count:
+                ans+=count[ps-goal]
+            if ps in count:
+                count[ps]+=1
+            else:
+                count[ps]=1
+        return ans
